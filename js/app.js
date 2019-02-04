@@ -1,6 +1,15 @@
+var url = window.location.href; // Esta línea obtiene el url del navegador, para saber si estamos en el Local Host o ya en nuestro servidor
+var swLocation = '/twittor/sw.js';
+
+
 // Registro del Service Worker
 if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('/sw.js')
+
+    if (url.includes('localhost')) {
+        swLocation = '/sw.js';
+    }
+
+    navigator.serviceWorker.register(swLocation);
 }
 
 
